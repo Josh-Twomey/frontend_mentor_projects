@@ -10,6 +10,9 @@ export default {
       width: {
         45: "45%",
       },
+      height: {
+        vh: "90vh",
+      },
       colors: {
         Lime: "hsl(61, 70%, 52%)",
         Red: "hsl(4, 69%, 50%)",

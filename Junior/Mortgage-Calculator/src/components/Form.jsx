@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Form(props) {
+export default function Form({ addInterest, addRepayment, clearInfo}) {
     
 const [formData, setFormData] = useState({
  mortgageAmount: "",
@@ -21,7 +21,7 @@ const handleSubmit = (e) => {
   };
 
 const clearForm = () => {
-  props.clearInfo()
+  clearInfo()
   setFormData({
     mortgageAmount: "",
     mortgageTerm: "",
@@ -36,14 +36,14 @@ const clearForm = () => {
     const totalLoanAmount = monthlyPayment * term
     const interestAmount = totalLoanAmount - mortgageAmount
     if (calculationType === "interest") {
-      props.addInterest(interestAmount.toFixed(2),totalLoanAmount.toFixed(2))
+      addInterest(interestAmount.toFixed(2),totalLoanAmount.toFixed(2))
     } else {
-      props.addRepayment(monthlyPayment.toFixed(2), totalLoanAmount.toFixed(2));
+      addRepayment(monthlyPayment.toFixed(2), totalLoanAmount.toFixed(2));
     }
   }
  
     return (
-      <div className="w-full bg-white p-6 rounded-l-3xl">
+      <div className="w-full bg-white p-6 rounded-t-md md:rounded-l-3xl">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-Jakarta font-bold text-Blue-900">
             Mortgage Calculator
@@ -77,8 +77,8 @@ const clearForm = () => {
               />
             </div>
           </label>
-          <div className="flex justify-between align-middle mt-4 mb-8">
-            <label className="form-control w-45" htmlFor="mortgage-term">
+          <div className="md:flex justify-between align-middle mt-4 mb-6">
+            <label className="form-control md:w-45" htmlFor="mortgage-term">
               <div className="label">
                 <span className="text-base font-Jakarta font-medium text-Blue-900">
                   Mortgage Term
@@ -99,7 +99,7 @@ const clearForm = () => {
                 </div>
               </div>
             </label>
-            <label className="form-control w-45" htmlFor="interest-rate">
+            <label className="form-control md:w-45" htmlFor="interest-rate">
               <div className="label">
                 <span className="text-base font-Jakarta font-medium text-Blue-900">
                   Interest Rate
@@ -124,7 +124,7 @@ const clearForm = () => {
               </div>
             </label>
           </div>
-          <label className="form-control w-full pt-4" htmlFor="calculationType">
+          <label className="form-control w-full" htmlFor="calculationType">
             <div className="label">
               <span className="text-base font-Jakarta text-Blue-900 font-medium">
                 Mortgage Type
@@ -172,7 +172,7 @@ const clearForm = () => {
             </label>
           </label>
           <button
-            className="flex items-start ml-0 py-2 px-6 rounded-full m-5 bg-Lime font-Jakarta font-bold text-base text-Blue-900"
+            className="flex items-center md:items-start ml-0 py-2 px-6 rounded-full m-5 bg-Lime font-Jakarta font-bold text-base text-Blue-900"
             type="submit"
           >
             <svg

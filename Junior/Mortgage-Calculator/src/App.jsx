@@ -37,7 +37,7 @@ function App() {
     })
   }
   return (
-    <div className='grid grid-cols-2 w-full h-full'>
+    <div className='grid w-full md:grid-cols-2'>
       <Form addInterest={addInterest} addRepayment={addRepayment} clearInfo={clearInfo}/>
       <Display display={info.display} repayment={info.repayment} total={info.total} interest={info.interest}/>
     </div>
